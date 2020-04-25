@@ -39,7 +39,7 @@ sudo sh dkms-install.sh
 make daemon
 ```
 
-The daemon should get access to the /dev/strixdlx, so copy the rules file
+The daemon should get access to the /dev/strixdlx, so copy the rules file for udev
 ```bash
 sudo cp 90-strixdlx.rules to /etc/udev/udev.rules.d/
 ```
@@ -49,8 +49,13 @@ If usbhid is compiled as module you can use a quirk to block it:
 ```bash
 sudo cp usbhid.conf /etc/modprobe.d/
 ```
-Otherwise you need to build a udev rule to block it.
+If usbhid is not a module you have to build a udev rule to block the usbhid driver for this device. But be careful: If you block usbhid completly it can be that your mouse and keyboard
+doesn't work anymore.
 
+Remake initramfs
+```bash
+sudo mkinitcipio -P
+```
 
 The userspace daemon can be copied where you want. I use /usr/bin for it:
 ```bash
@@ -71,12 +76,4 @@ You can use
 make
 ```
 to build only the kernel module without dkms.
-You can try it by using insmod or use xz and copy it to your kernel folder.
-
-
-## 5. Licence :
-
-
-
-
-
+Afterwards you can try it out by using insmod or copy copy it over to your kernel.
