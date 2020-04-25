@@ -1,0 +1,13 @@
+[Unit]
+Description=Daemon for strix raid dlx driver
+
+[Service]
+User=tobias
+Type=simple
+PIDFile=/run/strix-daemon.pid
+ExecStart=/usr/bin/strix-daemon
+
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target

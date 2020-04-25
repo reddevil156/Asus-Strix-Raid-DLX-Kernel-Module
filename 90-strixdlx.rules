@@ -1,0 +1,1 @@
+SUBSYSTEM=="usbmisc", DRIVERS=="strixdlx", MODE="0666"
