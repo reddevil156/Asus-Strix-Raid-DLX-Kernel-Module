@@ -59,14 +59,14 @@ sudo mkinitcipio -P
 
 The userspace daemon can be copied where you want. I use /usr/bin for it:
 ```bash
-sudo cp strix-daemon /usr/bin
+cp strix-daemon /usr/bin
 ```
 
 The daemon must be started as user.
 ```bash
 mkdir -p ~/.config/systemd/usr/
 cp strix-daemon.service ~/config/systemd/usr/
-systemctl --user start daemon.service
+systemctl --user start strix-daemon.service
 ```
 
 ## 4. Manual Installation
